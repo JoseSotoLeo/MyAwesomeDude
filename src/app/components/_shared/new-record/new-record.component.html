@@ -1,0 +1,32 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a new Record</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="recordForm" (ngSubmit)="onSubmit(recordForm.value)">
+        <div class="modal-body">
+        
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Artist" aria-label="Artist" formControlName="artist">
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Title" aria-label="Title" formControlName="title">
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Isrc" aria-label="Isrc" formControlName="isrc">
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Duration" aria-label="Duration" formControlName="duration">
+              </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="recordForm.invalid">Create!</button>
+      </div>
+    </form>
+    </div>
+  </div>
+
+
+

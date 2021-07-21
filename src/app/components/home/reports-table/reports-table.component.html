@@ -1,0 +1,23 @@
+<div class="reports-container" *ngIf="reports$ | async as reports else noreports" @fadeAnimation>
+<table class="table" *ngIf="reports.length > 0 else zeroreports">
+  
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let header of headers$">{{header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let report of reports" [className]="helperSelectedReport === report ? 'selected-report':''">
+        <td>{{report.artist}}</td>
+        <td>{{report.title}}</td>
+        <td>{{report.isrc}}</td>
+        <td>{{report.duration}}</td>
+        <td><button type="button" class="btn btn-outline-primary" (click)="selectReport(report)">></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #zeroreports><h4>Well done! Time for some nachos!</h4></ng-template>
+</div>
+
+<ng-template #noreports><h4>No work today, Hooray!!</h4></ng-template>

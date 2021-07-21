@@ -1,0 +1,15 @@
+<app-welcome></app-welcome>
+
+
+<main>
+    <div class="container home-container">
+        <div class="row home-row">
+            <div class="col home-reports">
+                <app-reports-table (selectedReport)="getSelectedReport($event)"></app-reports-table>
+            </div>
+            <div class="col home-results">
+                <app-results-table [selectedReport] = "selectedReport"></app-results-table>
+            </div>
+        </div>
+    </div>
+</main>

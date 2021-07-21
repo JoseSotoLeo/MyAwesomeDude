@@ -1,0 +1,50 @@
+.general-container{
+    height: 100%;
+    display: flex;
+
+    .noreport-container{
+        align-self: center;
+        padding-left: 40%;
+    
+        .noreport-text{
+            font-weight: 500;
+            font-size: 2rem;
+        }
+    }
+}
+
+.results-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .btn{
+        border-radius: 2.5rem;
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        &.btn-showall:hover{
+            color: white;
+        }
+    }
+}
+
+.table{
+    width: 100%;
+    table-layout: fixed;
+    tbody tr{
+        cursor: pointer;
+        &:hover{
+            background-color: #cee3eb;
+        }
+    }
+}
+
+.selected-row{
+    background-color: #c3d8db;
+}

@@ -1,0 +1,40 @@
+<div class="general-container" @fadeAnimation>
+<div class="row results-content" *ngIf="selectedReport else noreport" @fadeInAnimation>
+  <div class="col-10"> 
+    <table class="table" >
+      <thead>
+        <tr>
+          <th scope="col" *ngFor="let header of headers$">{{header}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let option of options$ | async" (click)="onSelectResult(option)" [className]="selectedOption === option ? 'selected-row':''">
+          <td>{{option.artist}}</td>
+          <td>{{option.title}}</td>
+          <td>{{option.isrc}}</td>
+          <td>{{option.duration}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-2 button-col" *ngIf="selectedReport">
+    <button type="button" class="btn btn-outline-warning btn-showall" (click)="showAll()">More</button>
+    <button type="button" class="btn btn-outline-primary btn-addnew" data-bs-toggle="modal" data-bs-target="#exampleModal">New</button>
+    <button type="button" class="btn btn-outline-success btn-complete" (click)="onComplete(selectedReport)"[disabled]="!selectedReport || !selectedOption">&#10003;</button>
+  </div>
+</div>
+<ng-template #noreport>
+  <div class="noreport-container">
+    <div class="noreport-text">Choose a report</div>
+  </div>
+</ng-template>
+</div>
+
+
+<!-- New Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <app-new-record (finishedTask)="onFinishedTask($event)"></app-new-record>
+</div>
+
+<!-- Completed Alert -->
+<app-completed-alert [alertShowing]="alertShowing" (alertDismissEvent)="onCloseAlert($event)"></app-completed-alert>
